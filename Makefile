@@ -28,4 +28,4 @@ build.web:
 	docker compose build web
 
 lint: build.web
-	docker run --rm homeproject-web sh -c "uv run isort . && uv run black --color . && uv run ruff check --fix && uv run mypy . && uv run codespell --enable-colors /app && uv run refurb ."
+	docker run --rm homeproject-web sh -c "uv run black --color . && uv run ruff check --fix && uv run mypy . && uv run codespell --enable-colors /app && uv run refurb ."

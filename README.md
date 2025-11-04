@@ -2,8 +2,8 @@
 
 ## Getting Started
 The Service Consists of several components:
-- Flask Web Application – Serves as the main API layer, handling HTTP requests and routing.
-- GraphQL API – Provides a flexible query interface on top of the data layer, allowing clients to request exactly the data they need. Implemented using Strawberry GraphQL integrated with Flask.
+- FastAPI Web Application – Serves as the main API layer, handling HTTP requests and routing.
+- GraphQL API – Provides a flexible query interface on top of the data layer, allowing clients to request exactly the data they need. Implemented using Strawberry GraphQL integrated with FastAPI.
 - PostgresSQL Database – Manages data persistence, supporting relational data models and ensuring consistency across the service.
 
 ### Run App
