@@ -11,7 +11,7 @@ from lib.jwt.manager import JWTManager
 class Authenticate(BasePermission):
     message: str = "User is not Authenticated"
 
-    def has_permission(self, source: Any, info: Info, **kwargs) -> bool:
+    def has_permission(self, _source: Any, info: Info, **_kwargs) -> bool:
         request: Request = info.context["request"]
         authentication: str | None = request.headers.get("authorization")
         if authentication:

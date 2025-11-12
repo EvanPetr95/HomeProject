@@ -11,36 +11,6 @@ from lib.graphql import QueryInput
 from app.grant_feedback.types import GrantFeedbackInput
 
 
-async def resolve_grant_feedbacks(db: AsyncSession, query_input: QueryInput) -> Page:
-    filters: list = []
-    if query_input.search:
-        filters += [or_(GrantFeedback.comment.contains(query_input.search))]
-
-    query: Select = select(GrantFeedback).filter(*filters)
-
-    page: Page = await apaginate(
-        conn=db,
-        query=query,
-        params=Params(
-            page=query_input.pagination.page, size=query_input.pagination.size
-        ),
-    )
-
-    return page
-
-
-async def resolve_grant_feedback_by_id(db: AsyncSession, id: UUID) -> GrantFeedback:
-    query: Select = select(GrantFeedback).filter(GrantFeedback.id == id)
-    grant_feedback: GrantFeedback | None = (
-        (await db.execute(query)).unique().scalar_one_or_none()
-    )
-
-    if grant_feedback is None:
-        raise GraphQLError("Grant ID Not found!")
-
-    return grant_feedback
-
-
 class QueryResolver:
     @staticmethod
     async def get_grant_feedbacks(
